@@ -13,7 +13,8 @@ public class AppConfig { // this is what we need to start bootstrapping our appl
     @Bean(name = "speakerService") // the name is optional  - registry
     @Scope(value = BeanDefinition.SCOPE_SINGLETON) // optional because the singleton is the default scope
     public SpeakerService getSpeakerService(){
-        SpeakerServiceImpl service = new SpeakerServiceImpl(getSpeakerRepository()); // Constructor Injection
+     //   SpeakerServiceImpl service = new SpeakerServiceImpl(getSpeakerRepository()); // Constructor Injection
+        SpeakerServiceImpl service = new SpeakerServiceImpl(); // Automatically inject that speakerRepository bean into the setter that has @Autowired
 /*
         SpeakerServiceImpl service = new SpeakerServiceImpl();
         service.setRepository(getSpeakerRepository()); -- Setter Injection
