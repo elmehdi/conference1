@@ -7,12 +7,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import util.CalendarFactory;
+
+import java.util.Calendar;
 
 // the bean is a singleton
 @Configuration // like a register
 @ComponentScan({"org.diskdor"}) //path from where start scanning for beans for autowired
 // Scans the @Repository/@Service and consider them as beans
 public class AppConfig { // this is what we need to start bootstrapping our application
+    @Bean(name = "cal")
+    public CalendarFactory calfactory(){
+        CalendarFactory factory = new CalendarFactory();
+        factory.addDays(2);
+        return factory;
+    }
+
+    @Bean
+    public Calendar cal() throws Exception{
+        return calfactory().getObject();
+    }
     /*
     @Bean(name = "speakerService") // the name is optional  - registry
     @Scope(value = BeanDefinition.SCOPE_SINGLETON) // optional because the singleton is the default scope
