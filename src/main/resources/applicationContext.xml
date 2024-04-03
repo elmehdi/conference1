@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name = "speakerRepository"
+          class = "org.diskdor.repository.HibernateSpeakerRepositoryImpl"/>
+
+    <bean name="speakerService"
+          class="org.diskdor.service.SpeakerServiceImpl">
+       <!--
+        <property name="speakerRepository" ref="speakerRepository"/>
+        Setter Injection " dakchi 3lach f stter li f service reje3naha setSpeakerRepository fblasst setRepository. bach i3ref achmn metohd i9aleb 3liha -->
+
+        <constructor-arg index="0" ref="speakerRepository"/> <!-- index is for constructor arguments -->
+    </bean>
+</beans>
