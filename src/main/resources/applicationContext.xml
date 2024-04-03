@@ -7,12 +7,14 @@
     <bean name = "speakerRepository"
           class = "org.diskdor.repository.HibernateSpeakerRepositoryImpl"/>
 
-    <bean name="speakerService"
-          class="org.diskdor.service.SpeakerServiceImpl">
+    <bean name = "speakerService"
+          class = "org.diskdor.service.SpeakerServiceImpl"
+          autowire = "constructor"> <!-- that easy. sf autowirina m3a constructor -->
        <!--
         <property name="speakerRepository" ref="speakerRepository"/>
         Setter Injection " dakchi 3lach f stter li f service reje3naha setSpeakerRepository fblasst setRepository. bach i3ref achmn metohd i9aleb 3liha -->
 
-        <constructor-arg index="0" ref="speakerRepository"/> <!-- index is for constructor arguments -->
+        <!--
+        <constructor-arg index="0" ref="speakerRepository"/> <!- index is for constructor arguments -->
     </bean>
 </beans>
